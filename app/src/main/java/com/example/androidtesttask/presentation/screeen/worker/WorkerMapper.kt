@@ -10,11 +10,10 @@ interface WorkerMapper {
 class WorkerMapperImpl : WorkerMapper {
     override fun convertWorkerResponseToWorker(response: WorkerResponse): List<Worker> {
         val list: MutableList<Worker> = mutableListOf()
-        val listSpecialty: MutableList<Worker.Specialty> = mutableListOf()
 
         response.response?.forEach { worker ->
 
-            listSpecialty.clear()
+            val listSpecialty: MutableList<Worker.Specialty> = mutableListOf()
 
             worker.specialty?.forEach {
                 listSpecialty.add(
