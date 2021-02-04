@@ -1,14 +1,8 @@
 
 <
 build.gradle,f\0\f07866736216be0ee2aba49e392191aeae700a35
-
-]app/src/main/java/com/example/androidtesttask/presentation/screeen/country/CountryFragment.kt,0\f\0f4fd27cd106dfa20301030b6b4b80445148383f
-Ž
-^app/src/main/java/com/example/androidtesttask/presentation/screeen/country/CountryPresenter.kt,5\c\5c4f0b5e8bb2d43b69fd972e4560c0a3f0d3284e
 @
 app/build.gradle,f\4\f4a01d6a4fcb971362ec00a83903fd3902f52164
-’
-bapp/src/main/java/com/example/androidtesttask/presentation/screeen/country/CountryPresenterImpl.kt,6\3\63cf99428ddeb9d54570d814e284acd319e0ab41
 X
 (gradle/wrapper/gradle-wrapper.properties,f\b\fbe448ebfc3eb2d4e308f6b8b043666f5b57235e
 ƒ
@@ -45,8 +39,6 @@ A
 Napp/src/main/java/com/example/androidtesttask/data/source/local/AppDatabase.kt,9\9\99df47a52f2a5a69531baede22371682af55f417
 €
 Papp/src/main/java/com/example/androidtesttask/data/source/local/dao/WorkerDao.kt,5\d\5d0be514bb00b1fd68c8863ae7d4fc532f1b0fdd
-
-Oapp/src/main/java/com/example/androidtesttask/data/responses/CountryResponse.kt,7\8\78e3aa3553853e6194bb25e2e456f32ae528d34c
 „
 Tapp/src/main/java/com/example/androidtesttask/data/repository/WorkerRepositoryImp.kt,8\d\8d04829332514085c02f2fc357142d3402efb9e7
 ƒ
@@ -57,5 +49,29 @@ v
 Fapp/src/main/java/com/example/androidtesttask/domain/model/WorkerDB.kt,c\b\cba1f57c85439ee4fde1faee4e57f85b7fbf480d
 |
 Lapp/src/main/java/com/example/androidtesttask/domain/model/WorkerResponse.kt,7\8\7836cc19dacda9c5e468c4f70d21abbc820e533a
-‰
-Yapp/src/main/java/com/example/androidtesttask/presentation/screeen/worker/WorkerMapper.kt,8\d\8dc4512215ef39a416b92b52a7c0efc84a0a0895
+T
+$.idea/codeStyles/codeStyleConfig.xml,d\d\dd7b3350c29c49497756c7f32c69a3bed18b1cba
+L
+.idea/codeStyles/Project.xml,6\e\6ecd6000a7b6f4a2884412ff19f74193ed089648
+|
+Lapp/src/main/java/com/example/androidtesttask/domain/model/WorkerFavorite.kt,8\1\819683a4c7397d2bc17e66e42f37a4ded8a5b2b2
+Š
+Zapp/src/main/java/com/example/androidtesttask/domain/repository/WorkerDetailsRepository.kt,9\3\93cd324233f560ac4aa21e4761f169ae97fd9521
+‡
+Wapp/src/main/java/com/example/androidtesttask/domain/usecase/GetWorkerDetailsUseCase.kt,c\2\c27bdc169bebc3c9113122866a01fc0bc4b8b9cc
+–
+fapp/src/main/java/com/example/androidtesttask/presentation/screeen/workerdetail/WorkerDetailsMapper.kt,2\3\23f7b54702b7f26047a2df64c51a9a86599b5c33
+p
+@app/src/main/java/com/example/androidtesttask/util/Extensions.kt,b\8\b8110699ca47b673f3c171d1b9213a5f00045639
+™
+iapp/src/main/java/com/example/androidtesttask/presentation/screeen/workerdetail/WorkerDetailsViewModel.kt,8\d\8d9f6d07355c9e7b8c1798b0fad821ba1df5c9d3
+‹
+[app/src/main/java/com/example/androidtesttask/data/repository/WorkerDetailsRepositoryImp.kt,6\c\6cf6492209aa811d1f411b25f5880400053aae5f
+•
+eapp/src/main/java/com/example/androidtesttask/presentation/screeen/worker/OnWorkersAdapterListener.kt,f\e\fea0ffed655fcfbacae9cce9264ab36fadcbe199
+˜
+happ/src/main/java/com/example/androidtesttask/presentation/screeen/workerdetail/WorkerDetailsFragment.kt,3\d\3d769d64926191ac24e9ccaa18fc1a3c3e7fa147
+•
+eapp/src/main/java/com/example/androidtesttask/presentation/screeen/workerdetail/WorkerDetailsModel.kt,e\c\ec6cdb992230e3f5aa34319834e84be90af4cbae
+Š
+Zapp/src/main/java/com/example/androidtesttask/presentation/screeen/worker/WorkersMapper.kt,3\4\34a5a571b01b096dc27ccdc203e6920758e550ff

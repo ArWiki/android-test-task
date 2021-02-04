@@ -20,7 +20,7 @@ data class WorkerResponse(
     ) {
         data class Specialty(
             @SerializedName("specialty_id")
-            var specialtyId: String?,
+            var specialtyId: Int?,
             @SerializedName("name")
             var specialtyName: String?,
         )

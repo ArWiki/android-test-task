@@ -3,9 +3,11 @@ package com.example.androidtesttask.di
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
+import com.example.androidtesttask.data.repository.WorkerDetailsRepositoryImp
 import com.example.androidtesttask.data.source.remote.RetrofitService
 import com.example.androidtesttask.data.repository.WorkerRepositoryImp
 import com.example.androidtesttask.data.source.local.AppDatabase
+import com.example.androidtesttask.domain.repository.WorkerDetailsRepository
 import com.example.androidtesttask.domain.repository.WorkerRepository
 import com.example.androidtesttask.util.Constants.BASE_URL
 import com.google.gson.Gson
@@ -64,18 +66,19 @@ class NetworkModule {
                  * and indicate an error in fetching the response.
                  * The 'max-age' attribute is responsible for this behavior.
                  */
-                request = if (true) request.newBuilder() //make default to true till i figure out how to inject network status
-                    .header("Cache-Control", "public, max-age=" + 5).build()
-                /*If there is no Internet, get the cache that was stored 7 days ago.
-                 * If the cache is older than 7 days, then discard it,
-                 * and indicate an error in fetching the response.
-                 * The 'max-stale' attribute is responsible for this behavior.
-                 * The 'only-if-cached' attribute indicates to not retrieve new data; fetch the cache only instead.
-                 */
-                else request.newBuilder().header(
-                    "Cache-Control",
-                    "public, only-if-cached, max-stale=" + 60 * 60 * 24 * 7
-                ).build()
+                request =
+                    if (true) request.newBuilder() //make default to true till i figure out how to inject network status
+                        .header("Cache-Control", "public, max-age=" + 5).build()
+                    /*If there is no Internet, get the cache that was stored 7 days ago.
+                     * If the cache is older than 7 days, then discard it,
+                     * and indicate an error in fetching the response.
+                     * The 'max-stale' attribute is responsible for this behavior.
+                     * The 'only-if-cached' attribute indicates to not retrieve new data; fetch the cache only instead.
+                     */
+                    else request.newBuilder().header(
+                        "Cache-Control",
+                        "public, only-if-cached, max-stale=" + 60 * 60 * 24 * 7
+                    ).build()
                 chain.proceed(request)
             }
         return client.build()
@@ -115,14 +118,6 @@ class NetworkModule {
         return retrofit.create(RetrofitService::class.java)
     }
 
-//    @Singleton
-//    @Provides
-//    fun provideWorkerRepository(
-//        retrofitService: RetrofitService
-//    ): WorkerRepository {
-//        return WorkerRepositoryImp(retrofitService)
-//    }
-
     @Singleton
     @Provides
     fun provideWorkerRepository(
@@ -130,5 +125,13 @@ class NetworkModule {
         retrofitService: RetrofitService
     ): WorkerRepository {
         return WorkerRepositoryImp(appDatabase, retrofitService)
+    }
+
+    @Singleton
+    @Provides
+    fun provideWorkerDetailsRepository(
+        appDatabase: AppDatabase,
+    ): WorkerDetailsRepository {
+        return WorkerDetailsRepositoryImp(appDatabase)
     }
 }

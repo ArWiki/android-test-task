@@ -12,11 +12,11 @@ import com.example.androidtesttask.R
 import com.example.androidtesttask.databinding.FragmentWorkersBinding
 import androidx.databinding.DataBindingUtil
 import com.example.androidtesttask.domain.model.Worker
-import com.example.androidtesttask.domain.model.WorkerResponse
+import com.example.androidtesttask.presentation.screeen.workerdetail.WorkerDetailsFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class WorkersFragment : Fragment() {
+class WorkersFragment : Fragment(), OnWorkersAdapterListener {
 
     private lateinit var fragmentAlbumsBinding: FragmentWorkersBinding
     private var adapter: WorkersAdapter? = null
@@ -25,7 +25,7 @@ class WorkersFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        adapter = WorkersAdapter()
+        adapter = WorkersAdapter(this)
         viewModel.loadWorkers()
     }
 
@@ -52,6 +52,17 @@ class WorkersFragment : Fragment() {
     private fun initRecyclerView(workers: List<Worker>) {
         Log.i("WorkersFragment", workers.toString())
         adapter?.addData(workers)
+    }
+
+    override fun showWorkerDetails(worker: Worker) {
+        parentFragmentManager.beginTransaction()
+            .replace(
+                R.id.fragment_container,
+                WorkerDetailsFragment.newInstance(viewModel.convertToWorkDetailsModel(worker)),
+                WorkerDetailsFragment.FRAGMENT_NAME
+            )
+            .addToBackStack(WorkerDetailsFragment.FRAGMENT_NAME)
+            .commitAllowingStateLoss()
     }
 
     override fun onDetach() {

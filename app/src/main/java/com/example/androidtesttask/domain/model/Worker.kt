@@ -1,6 +1,5 @@
 package com.example.androidtesttask.domain.model
 
-
 data class Worker(
     var firstName: String?,
     var lastName: String?,
@@ -9,7 +8,7 @@ data class Worker(
     var specialty: List<Specialty>?,
 ) {
     data class Specialty(
-        var specialtyId: String?,
+        var specialtyId: Int?,
         var specialtyName: String?,
     )
 }

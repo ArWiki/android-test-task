@@ -23,6 +23,8 @@ class WorkersViewModel @ViewModelInject constructor(private val getWorkersUseCas
 //
 //    fun set(workerResponse: WorkerResponse) = run { workerData.value = workerResponse }
 
+    fun convertToWorkDetailsModel(worker: Worker) = mapper.convertToWorkDetailsModel(worker)
+
     fun loadWorkers() {
         getWorkersUseCase.execute(
             onSuccess = {

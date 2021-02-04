@@ -10,7 +10,7 @@ import com.example.androidtesttask.databinding.WorkerDescribeBinding
 import com.example.androidtesttask.domain.model.Worker
 import java.util.ArrayList
 
-internal class WorkersAdapter() :
+internal class WorkersAdapter(val mListener: OnWorkersAdapterListener) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val TAG = WorkersAdapter::class.java.name
@@ -61,10 +61,9 @@ internal class WorkersAdapter() :
             val workersViewModel = WorkerViewModel(worker)
             holderWorkerBinding.workerViewModel = workersViewModel
 
-//            itemView.setOnClickListener {
-//                mListener.showPhotos(album)
-//            }
-
+            itemView.setOnClickListener {
+                mListener.showWorkerDetails(worker)
+            }
         }
     }
 
