@@ -4,7 +4,9 @@ import com.example.androidtesttask.domain.model.WorkerDB
 import com.example.androidtesttask.presentation.model.Worker
 import com.example.androidtesttask.domain.model.WorkerResponse
 import com.example.androidtesttask.presentation.screeen.workerdetail.WorkerDetailsModel
+import com.example.androidtesttask.util.Constants
 import com.example.androidtesttask.util.Constants.BIRTHDAY_WITH_YEAR
+import com.example.androidtesttask.util.Constants.DOUBLE_HYPHEN
 import com.example.androidtesttask.util.convertDate
 import com.example.androidtesttask.util.toFirstUpperCase
 import java.util.*
@@ -34,7 +36,7 @@ class WorkerMapperImpl : WorkerMapper {
                 Worker(
                     workerItem.firstName?.toLowerCase(Locale.getDefault())?.toFirstUpperCase(),
                     workerItem.lastName?.toLowerCase(Locale.getDefault())?.toFirstUpperCase(),
-                    workerItem.birthday?.convertDate(),
+                    workerItem.birthday?.convertDate() ?: DOUBLE_HYPHEN,
                     workerItem.avatarUrl,
                     listSpecialty,
                 )

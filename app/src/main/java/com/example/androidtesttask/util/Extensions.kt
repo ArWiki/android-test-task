@@ -1,6 +1,7 @@
 package com.example.androidtesttask.util
 
 import androidx.appcompat.widget.AppCompatImageView
+import com.example.androidtesttask.util.Constants.DOUBLE_HYPHEN
 import com.squareup.picasso.Picasso
 import java.text.SimpleDateFormat
 import java.util.*
@@ -18,7 +19,7 @@ fun String.toFirstUpperCase(): String {
 
 fun String.convertDate(): String {
     return if (this.isEmpty()) {
-        Constants.DOUBLE_HYPHEN
+        DOUBLE_HYPHEN
     } else {
         val formatter = if (this.substring(4, 5) == Constants.HYPHEN) {
             SimpleDateFormat(Constants.JSON_DATE_YYYY_MM_DD, Locale.ENGLISH)
