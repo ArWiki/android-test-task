@@ -5,9 +5,7 @@ import com.example.androidtesttask.domain.model.WorkerDB
 import io.reactivex.Single
 
 interface WorkerRepository {
-    fun getWorkers(): Single<WorkerResponse>
+    fun getWorkersBySpecialityId(specialityId: Int?): Single<MutableList<WorkerDB>>
 
     fun deleteWorker(worker: WorkerDB)
-
-    fun addWorker(worker: WorkerDB)
 }

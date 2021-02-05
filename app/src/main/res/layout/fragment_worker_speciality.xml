@@ -6,8 +6,8 @@
         <import type="android.view.View" />
 
         <variable
-            name="workersViewModel"
-            type="com.example.androidtesttask.presentation.screeen.worker.WorkersViewModel" />
+            name="workersSpecialityViewModel"
+            type="com.example.androidtesttask.presentation.screeen.workersspeciality.WorkersSpecialityViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -46,7 +46,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:visibility="@{workersViewModel.isLoad()?View.GONE:View.VISIBLE}"
+            android:visibility="@{workersSpecialityViewModel.isLoad()?View.GONE:View.VISIBLE}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

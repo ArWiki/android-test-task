@@ -2,7 +2,7 @@ package com.example.androidtesttask
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.androidtesttask.presentation.screeen.worker.WorkersFragment
+import com.example.androidtesttask.presentation.screeen.workersspeciality.WorkersSpecialityFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -13,15 +13,15 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         //setSupportActionBar(findViewById(R.id.toolbar))
 
-        navigateToWorkersPage()
+        navigateToWorkersSpecialityPage()
     }
 
-    fun navigateToWorkersPage() {
+    fun navigateToWorkersSpecialityPage() {
         supportFragmentManager.beginTransaction()
             .add(
                 R.id.fragment_container,
-                WorkersFragment.newInstance(),
-                WorkersFragment.FRAGMENT_NAME
+                WorkersSpecialityFragment.newInstance(),
+                WorkersSpecialityFragment.FRAGMENT_NAME
             )
             .addToBackStack(null)
             .commitAllowingStateLoss()

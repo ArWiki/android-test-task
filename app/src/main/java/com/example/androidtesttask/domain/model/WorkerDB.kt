@@ -5,11 +5,11 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "Worker")
 data class WorkerDB(
-    @PrimaryKey var id: Long,
+    @PrimaryKey(autoGenerate = true) var id: Long,
     var firstName: String?,
     var lastName: String?,
     var birthday: String?,
     var avatarUrl: String?,
-    var specialtyId: Int?,
-    var specialtyName: String?,
+    var specialityId: Int?,
+    var specialityName: String?,
 )

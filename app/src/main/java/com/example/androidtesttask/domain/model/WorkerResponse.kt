@@ -16,13 +16,13 @@ data class WorkerResponse(
         @SerializedName("avatr_url")
         var avatarUrl: String?,
         @SerializedName("specialty")
-        var specialty: List<Specialty>?,
+        var speciality: List<Specialty>?,
     ) {
         data class Specialty(
             @SerializedName("specialty_id")
-            var specialtyId: Int?,
+            var specialityId: Int?,
             @SerializedName("name")
-            var specialtyName: String?,
+            var specialityName: String?,
         )
     }
 }

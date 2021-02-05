@@ -6,7 +6,9 @@ import androidx.lifecycle.ViewModel
 import com.example.androidtesttask.domain.model.WorkerFavorite
 import com.example.androidtesttask.domain.usecase.GetWorkerDetailsUseCase
 
-class WorkerDetailsViewModel @ViewModelInject constructor(private val getWorkerDetailsUseCase: GetWorkerDetailsUseCase) : ViewModel() {
+class WorkerDetailsViewModel @ViewModelInject constructor(
+    private val getWorkerDetailsUseCase: GetWorkerDetailsUseCase
+) : ViewModel() {
 
     private val TAG = WorkerDetailsViewModel::class.java.simpleName
     val workerFavoriteData = MutableLiveData<WorkerFavorite>()
@@ -28,11 +30,11 @@ class WorkerDetailsViewModel @ViewModelInject constructor(private val getWorkerD
         workerFavoriteData.value?.let { workerFavorite ->
             if (isFavorite.value == true) {
                 getWorkerDetailsUseCase.deleteAsFavorite(workerFavorite)
-            }else{
+            } else {
                 getWorkerDetailsUseCase.addAsFavorite(workerFavorite)
             }
             isFavorite.value?.let {
-                isFavorite.value= !it
+                isFavorite.value = !it
             }
         }
     }

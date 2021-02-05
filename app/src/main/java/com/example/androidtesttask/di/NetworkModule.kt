@@ -6,9 +6,11 @@ import android.net.NetworkInfo
 import com.example.androidtesttask.data.repository.WorkerDetailsRepositoryImp
 import com.example.androidtesttask.data.source.remote.RetrofitService
 import com.example.androidtesttask.data.repository.WorkerRepositoryImp
+import com.example.androidtesttask.data.repository.WorkerSpecialityRepositoryImp
 import com.example.androidtesttask.data.source.local.AppDatabase
 import com.example.androidtesttask.domain.repository.WorkerDetailsRepository
 import com.example.androidtesttask.domain.repository.WorkerRepository
+import com.example.androidtesttask.domain.repository.WorkerSpecialityRepository
 import com.example.androidtesttask.util.Constants.BASE_URL
 import com.google.gson.Gson
 import dagger.Module
@@ -122,9 +124,8 @@ class NetworkModule {
     @Provides
     fun provideWorkerRepository(
         appDatabase: AppDatabase,
-        retrofitService: RetrofitService
     ): WorkerRepository {
-        return WorkerRepositoryImp(appDatabase, retrofitService)
+        return WorkerRepositoryImp(appDatabase)
     }
 
     @Singleton
@@ -133,5 +134,14 @@ class NetworkModule {
         appDatabase: AppDatabase,
     ): WorkerDetailsRepository {
         return WorkerDetailsRepositoryImp(appDatabase)
+    }
+
+    @Singleton
+    @Provides
+    fun provideWorkerSpecialityRepository(
+        appDatabase: AppDatabase,
+        retrofitService: RetrofitService,
+    ): WorkerSpecialityRepository {
+        return WorkerSpecialityRepositoryImp(appDatabase, retrofitService)
     }
 }

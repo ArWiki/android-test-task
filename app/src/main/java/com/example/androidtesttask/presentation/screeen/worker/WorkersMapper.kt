@@ -1,38 +1,37 @@
 package com.example.androidtesttask.presentation.screeen.worker
 
-import com.example.androidtesttask.domain.model.Worker
+import com.example.androidtesttask.domain.model.WorkerDB
+import com.example.androidtesttask.presentation.model.Worker
 import com.example.androidtesttask.domain.model.WorkerResponse
 import com.example.androidtesttask.presentation.screeen.workerdetail.WorkerDetailsModel
 
 interface WorkerMapper {
-    fun convertWorkerResponseToWorker(response: WorkerResponse): List<Worker>
+    fun convertWorkerDBToWorker(worker: MutableList<WorkerDB>): List<Worker>
 
     fun convertToWorkDetailsModel(worker: Worker): WorkerDetailsModel
 }
 
 class WorkerMapperImpl : WorkerMapper {
-    override fun convertWorkerResponseToWorker(response: WorkerResponse): List<Worker> {
+    override fun convertWorkerDBToWorker(worker: MutableList<WorkerDB>): List<Worker> {
         val list: MutableList<Worker> = mutableListOf()
 
-        response.response?.forEach { worker ->
+        worker.forEach { workerItem ->
 
-            val listSpecialty: MutableList<Worker.Specialty> = mutableListOf()
+            val listSpecialty: MutableList<Worker.Speciality> = mutableListOf()
 
-            worker.specialty?.forEach {
                 listSpecialty.add(
-                    Worker.Specialty(
-                        it.specialtyId,
-                        it.specialtyName,
+                    Worker.Speciality(
+                        workerItem.specialityId,
+                        workerItem.specialityName,
                     )
                 )
-            }
 
             list.add(
                 Worker(
-                    worker.firstName,
-                    worker.lastName,
-                    worker.birthday,
-                    worker.avatarUrl,
+                    workerItem.firstName,
+                    workerItem.lastName,
+                    workerItem.birthday,
+                    workerItem.avatarUrl,
                     listSpecialty,
                 )
             )
@@ -46,7 +45,7 @@ class WorkerMapperImpl : WorkerMapper {
         worker.lastName,
         worker.birthday,
         worker.avatarUrl,
-        worker.specialty?.first()?.specialtyId,
-        worker.specialty?.first()?.specialtyName,
+        worker.speciality?.first()?.specialityId,
+        worker.speciality?.first()?.specialityName,
     )
 }

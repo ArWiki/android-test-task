@@ -7,9 +7,8 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import com.example.androidtesttask.R
-import com.example.androidtesttask.databinding.WorkerDetailsBinding
+import com.example.androidtesttask.databinding.FragmentWorkerDetailsBinding
 import com.example.androidtesttask.util.loadImageFull
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -17,11 +16,16 @@ import dagger.hilt.android.AndroidEntryPoint
 class WorkerDetailsFragment : Fragment() {
 
     private val TAG = WorkerDetailsFragment::class.java.name
-    private lateinit var fragmentWorkerDetailsBinding: WorkerDetailsBinding
+    private lateinit var fragmentWorkerDetailsBinding: FragmentWorkerDetailsBinding
     private val viewModel: WorkerDetailsViewModel by viewModels()
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        fragmentWorkerDetailsBinding = DataBindingUtil.inflate(inflater, R.layout.worker_details, container, false)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        fragmentWorkerDetailsBinding = DataBindingUtil
+            .inflate(inflater, R.layout.fragment_worker_details, container, false)
 
         fragmentWorkerDetailsBinding.workerDetailsViewModel = viewModel
 
@@ -32,15 +36,21 @@ class WorkerDetailsFragment : Fragment() {
         viewModel.setDetail(workerDetails)
         viewModel.checkFavoriteStatus(workerDetails)
 
-        viewModel.workerFavoriteData.observe(viewLifecycleOwner, Observer {
+        viewModel.workerFavoriteData.observe(viewLifecycleOwner, {
             fragmentWorkerDetailsBinding.detailTitleTextView.text = it?.lastName
-            fragmentWorkerDetailsBinding.detailToolbarImageView.loadImageFull(it?.avatarUrl)
+
+            if (it?.avatarUrl?.isEmpty() == true) {
+                fragmentWorkerDetailsBinding.detailToolbarImageView.setImageResource(R.drawable.no_image_available)
+            } else {
+                fragmentWorkerDetailsBinding.detailToolbarImageView.loadImageFull(it?.avatarUrl)
+            }
         })
 
-        viewModel.isFavorite.observe(viewLifecycleOwner, Observer {
+        viewModel.isFavorite.observe(viewLifecycleOwner, {
             it?.let {
                 fragmentWorkerDetailsBinding.detailFab.setImageResource(
-                    if (it) R.drawable.ic_star_full_vector
+                    if (it)
+                        R.drawable.ic_star_full_vector
                     else
                         R.drawable.ic_star_empty_white_vector
                 )

@@ -6,8 +6,8 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
 import com.example.androidtesttask.R
-import com.example.androidtesttask.databinding.WorkerDescribeBinding
-import com.example.androidtesttask.domain.model.Worker
+import com.example.androidtesttask.databinding.AdapterWorkerDescribeBinding
+import com.example.androidtesttask.presentation.model.Worker
 import java.util.ArrayList
 
 internal class WorkersAdapter(val mListener: OnWorkersAdapterListener) :
@@ -23,7 +23,9 @@ internal class WorkersAdapter(val mListener: OnWorkersAdapterListener) :
      * */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val holderAlbumBinding = DataBindingUtil.inflate<ViewDataBinding>(
-            LayoutInflater.from(parent.context), R.layout.worker_describe, parent, false
+            LayoutInflater.from(parent.context),
+            R.layout.adapter_worker_describe, parent,
+            false
         )
         return AlbumViewHolder(holderAlbumBinding)
     }
@@ -53,11 +55,13 @@ internal class WorkersAdapter(val mListener: OnWorkersAdapterListener) :
     }
 
 
-    inner class AlbumViewHolder(private val dataBinding: ViewDataBinding) : RecyclerView.ViewHolder(dataBinding.root) {
+    inner class AlbumViewHolder(
+        private val dataBinding: ViewDataBinding
+    ) : RecyclerView.ViewHolder(dataBinding.root) {
 
 
         fun onBind(worker: Worker) {
-            val holderWorkerBinding = dataBinding as WorkerDescribeBinding
+            val holderWorkerBinding = dataBinding as AdapterWorkerDescribeBinding
             val workersViewModel = WorkerViewModel(worker)
             holderWorkerBinding.workerViewModel = workersViewModel
 

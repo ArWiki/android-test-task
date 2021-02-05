@@ -75,3 +75,7 @@ happ/src/main/java/com/example/androidtesttask/presentation/screeen/workerdetail
 eapp/src/main/java/com/example/androidtesttask/presentation/screeen/workerdetail/WorkerDetailsModel.kt,e\c\ec6cdb992230e3f5aa34319834e84be90af4cbae
 Š
 Zapp/src/main/java/com/example/androidtesttask/presentation/screeen/worker/WorkersMapper.kt,3\4\34a5a571b01b096dc27ccdc203e6920758e550ff
+h
+8app/src/main/res/drawable/ic_star_empty_white_vector.xml,4\2\420edf627b590d4acc5774b55bbe32073bd807bf
+R
+"app/src/main/res/values/colors.xml,9\6\969faa2a5d9f5e8390e958d2c07f2cfd54676e6b

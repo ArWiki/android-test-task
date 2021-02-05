@@ -1,8 +1,7 @@
 package com.example.androidtesttask.presentation.screeen.worker
 
 import androidx.lifecycle.MutableLiveData
-import com.example.androidtesttask.domain.model.Worker
-import com.example.androidtesttask.domain.model.WorkerResponse
+import com.example.androidtesttask.presentation.model.Worker
 
 class WorkerViewModel(val worker: Worker) {
 
@@ -12,5 +11,4 @@ class WorkerViewModel(val worker: Worker) {
     init {
         workerData.value = worker
     }
-
 }

@@ -3,6 +3,7 @@ package com.example.androidtesttask.data.source.local.dao
 import androidx.room.*
 import com.example.androidtesttask.domain.model.WorkerDB
 import com.example.androidtesttask.domain.model.WorkerFavorite
+import io.reactivex.Single
 
 @Dao
 interface WorkerDao {
@@ -13,6 +14,9 @@ interface WorkerDao {
 
     @Query("SELECT * FROM Worker")
     fun loadAll(): MutableList<WorkerDB>
+
+    @Query("SELECT * FROM Worker where specialityId = :specialtyId")
+    fun loadWorkerBySpecialtyId(specialtyId: Int?): Single<MutableList<WorkerDB>>
 
     @Delete
     fun delete(worker: WorkerDB)

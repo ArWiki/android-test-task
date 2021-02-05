@@ -11,7 +11,7 @@ import androidx.lifecycle.Observer
 import com.example.androidtesttask.R
 import com.example.androidtesttask.databinding.FragmentWorkersBinding
 import androidx.databinding.DataBindingUtil
-import com.example.androidtesttask.domain.model.Worker
+import com.example.androidtesttask.presentation.model.Worker
 import com.example.androidtesttask.presentation.screeen.workerdetail.WorkerDetailsFragment
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -26,17 +26,28 @@ class WorkersFragment : Fragment(), OnWorkersAdapterListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         adapter = WorkersAdapter(this)
-        viewModel.loadWorkers()
+        val specialityId = arguments?.let { it.getInt(KEY_SPECIALITY_ID) }
+        viewModel.loadWorkers(specialityId)
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        fragmentAlbumsBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_workers, container, false)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        fragmentAlbumsBinding = DataBindingUtil.inflate(
+            inflater,
+            R.layout.fragment_workers,
+            container,
+            false
+        )
         fragmentAlbumsBinding.workersViewModel = viewModel
         fragmentAlbumsBinding.albumsRecyclerView.adapter = adapter
 
         viewModel.isLoad.observe(viewLifecycleOwner, Observer {
             it?.let { visibility ->
-                fragmentAlbumsBinding.albumsProgressBar.visibility = if (visibility) View.GONE else View.VISIBLE
+                fragmentAlbumsBinding.albumsProgressBar.visibility =
+                    if (visibility) View.GONE else View.VISIBLE
             }
         })
 
@@ -70,14 +81,15 @@ class WorkersFragment : Fragment(), OnWorkersAdapterListener {
         adapter = null
     }
 
-
     companion object {
         val FRAGMENT_NAME = WorkersFragment::class.java.name
+        const val KEY_SPECIALITY_ID = "KEY_SPECIALITY_ID"
 
         @JvmStatic
-        fun newInstance() =
+        fun newInstance(specialityId: Int) =
             WorkersFragment().apply {
                 arguments = Bundle().apply {
+                    putInt(KEY_SPECIALITY_ID, specialityId)
                 }
             }
     }
