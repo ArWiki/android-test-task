@@ -36,7 +36,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
-                    <ImageView
+                    <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/detail_toolbar_image_view"
                         android:transitionName="image"
                         android:layout_width="match_parent"
@@ -81,7 +81,7 @@
                     app:cardUseCompatPadding="true"
                     tools:ignore="RtlCompat">
 
-                    <TextView
+                    <androidx.appcompat.widget.AppCompatTextView
                         android:text="@{workerDetailsViewModel.workerFavoriteData.firstName}"
                         android:id="@+id/detail_title_text_view"
                         android:layout_width="match_parent"

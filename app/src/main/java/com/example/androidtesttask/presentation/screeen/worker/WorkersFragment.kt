@@ -3,6 +3,7 @@ package com.example.androidtesttask.presentation.screeen.worker
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
@@ -11,6 +12,7 @@ import androidx.lifecycle.Observer
 import com.example.androidtesttask.R
 import com.example.androidtesttask.databinding.FragmentWorkersBinding
 import androidx.databinding.DataBindingUtil
+import com.example.androidtesttask.MainActivity
 import com.example.androidtesttask.presentation.model.Worker
 import com.example.androidtesttask.presentation.screeen.workerdetail.WorkerDetailsFragment
 import dagger.hilt.android.AndroidEntryPoint
@@ -25,6 +27,7 @@ class WorkersFragment : Fragment(), OnWorkersAdapterListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
         adapter = WorkersAdapter(this)
         val specialityId = arguments?.let { it.getInt(KEY_SPECIALITY_ID) }
         viewModel.loadWorkers(specialityId)
@@ -41,6 +44,11 @@ class WorkersFragment : Fragment(), OnWorkersAdapterListener {
             container,
             false
         )
+
+        (activity as MainActivity).setSupportActionBar(fragmentAlbumsBinding.toolbar)
+        (activity as MainActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        (activity as MainActivity).supportActionBar?.setDisplayShowHomeEnabled(true)
+
         fragmentAlbumsBinding.workersViewModel = viewModel
         fragmentAlbumsBinding.albumsRecyclerView.adapter = adapter
 
@@ -74,6 +82,13 @@ class WorkersFragment : Fragment(), OnWorkersAdapterListener {
             )
             .addToBackStack(WorkerDetailsFragment.FRAGMENT_NAME)
             .commitAllowingStateLoss()
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> parentFragmentManager.popBackStackImmediate()
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
     override fun onDetach() {

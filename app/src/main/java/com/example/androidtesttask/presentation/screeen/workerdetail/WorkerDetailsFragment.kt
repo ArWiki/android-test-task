@@ -2,11 +2,13 @@ package com.example.androidtesttask.presentation.screeen.workerdetail
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.example.androidtesttask.MainActivity
 import com.example.androidtesttask.R
 import com.example.androidtesttask.databinding.FragmentWorkerDetailsBinding
 import com.example.androidtesttask.util.loadImageFull
@@ -19,6 +21,11 @@ class WorkerDetailsFragment : Fragment() {
     private lateinit var fragmentWorkerDetailsBinding: FragmentWorkerDetailsBinding
     private val viewModel: WorkerDetailsViewModel by viewModels()
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -26,6 +33,10 @@ class WorkerDetailsFragment : Fragment() {
     ): View? {
         fragmentWorkerDetailsBinding = DataBindingUtil
             .inflate(inflater, R.layout.fragment_worker_details, container, false)
+
+        (activity as MainActivity).setSupportActionBar(fragmentWorkerDetailsBinding.detailToolbar)
+        (activity as MainActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        (activity as MainActivity).supportActionBar?.setDisplayShowHomeEnabled(true)
 
         fragmentWorkerDetailsBinding.workerDetailsViewModel = viewModel
 
@@ -62,6 +73,13 @@ class WorkerDetailsFragment : Fragment() {
         }
 
         return fragmentWorkerDetailsBinding.root
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> parentFragmentManager.popBackStackImmediate()
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
     companion object {

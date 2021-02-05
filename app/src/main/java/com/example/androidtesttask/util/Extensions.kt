@@ -1,7 +1,7 @@
 package com.example.androidtesttask.util
 
-import android.widget.ImageView
+import androidx.appcompat.widget.AppCompatImageView
 import com.squareup.picasso.Picasso
 
-fun ImageView.loadImageFull(url: String?) =
+fun AppCompatImageView.loadImageFull(url: String?) =
     Picasso.get().load(url).into(this)

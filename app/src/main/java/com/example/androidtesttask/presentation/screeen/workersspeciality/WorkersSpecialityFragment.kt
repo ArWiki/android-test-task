@@ -2,12 +2,14 @@ package com.example.androidtesttask.presentation.screeen.workersspeciality
 
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import com.example.androidtesttask.MainActivity
 import com.example.androidtesttask.R
 import com.example.androidtesttask.databinding.FragmentWorkerSpecialityBinding
 import com.example.androidtesttask.presentation.model.Speciality
@@ -39,6 +41,9 @@ class WorkersSpecialityFragment : Fragment(), OnWorkersSpecialityAdapterListener
             container,
             false
         )
+
+        (activity as MainActivity).setSupportActionBar(fragmentWorkersSpecialityBinding.toolbar)
+
         fragmentWorkersSpecialityBinding.workersSpecialityViewModel = viewModel
         fragmentWorkersSpecialityBinding.albumsRecyclerView.adapter = adapter
 
