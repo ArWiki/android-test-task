@@ -69,7 +69,6 @@ class WorkersFragment : Fragment(), OnWorkersAdapterListener {
     }
 
     private fun initRecyclerView(workers: List<Worker>) {
-        Log.i("WorkersFragment", workers.toString())
         adapter?.addData(workers)
     }
 

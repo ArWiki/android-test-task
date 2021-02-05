@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
         navigateToWorkersSpecialityPage()
     }
 
-    fun navigateToWorkersSpecialityPage() {
+    private fun navigateToWorkersSpecialityPage() {
         supportFragmentManager.beginTransaction()
             .add(
                 R.id.fragment_container,

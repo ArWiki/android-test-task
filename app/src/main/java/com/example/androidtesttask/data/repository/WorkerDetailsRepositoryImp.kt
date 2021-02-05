@@ -18,7 +18,8 @@ class WorkerDetailsRepositoryImp(
     override fun isFavorite(worker: WorkerFavorite): Boolean {
         val loadOneByPhotoId = database.workerDao.isFavorite(
             worker.lastName,
-            worker.firstName)
+            worker.firstName,
+            worker.birthday)
         return loadOneByPhotoId != null
     }
 }

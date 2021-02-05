@@ -4,6 +4,10 @@ import com.example.androidtesttask.domain.model.WorkerDB
 import com.example.androidtesttask.presentation.model.Worker
 import com.example.androidtesttask.domain.model.WorkerResponse
 import com.example.androidtesttask.presentation.screeen.workerdetail.WorkerDetailsModel
+import com.example.androidtesttask.util.Constants.BIRTHDAY_WITH_YEAR
+import com.example.androidtesttask.util.convertDate
+import com.example.androidtesttask.util.toFirstUpperCase
+import java.util.*
 
 interface WorkerMapper {
     fun convertWorkerDBToWorker(worker: MutableList<WorkerDB>): List<Worker>
@@ -28,9 +32,9 @@ class WorkerMapperImpl : WorkerMapper {
 
             list.add(
                 Worker(
-                    workerItem.firstName,
-                    workerItem.lastName,
-                    workerItem.birthday,
+                    workerItem.firstName?.toLowerCase(Locale.getDefault())?.toFirstUpperCase(),
+                    workerItem.lastName?.toLowerCase(Locale.getDefault())?.toFirstUpperCase(),
+                    workerItem.birthday?.convertDate(),
                     workerItem.avatarUrl,
                     listSpecialty,
                 )

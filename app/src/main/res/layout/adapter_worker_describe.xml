@@ -20,14 +20,43 @@
         app:cardElevation="4dp"
         app:cardUseCompatPadding="true">
 
-        <androidx.appcompat.widget.AppCompatTextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="8dp"
-            android:gravity="center"
-            android:text="@{workerViewModel.worker.lastName}"
-            android:textColor="@color/black"
-            android:textSize="@dimen/title" />
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="8dp"
+                android:gravity="center"
+                android:text="@{workerViewModel.worker.firstName}"
+                android:textColor="@color/black"
+                android:textSize="@dimen/title" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="8dp"
+                android:gravity="center"
+                android:text="@{workerViewModel.worker.lastName}"
+                android:textColor="@color/black"
+                android:textSize="@dimen/title" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/actv_birthday"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="8dp"
+                android:gravity="center"
+                android:text="@{workerViewModel.worker.birthday}"
+                android:textColor="@color/black"
+                android:textSize="@dimen/title" />
+
+        </LinearLayout>
 
     </androidx.cardview.widget.CardView>
 

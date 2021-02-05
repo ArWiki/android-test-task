@@ -48,7 +48,11 @@ class WorkerDetailsFragment : Fragment() {
         viewModel.checkFavoriteStatus(workerDetails)
 
         viewModel.workerFavoriteData.observe(viewLifecycleOwner, {
-            fragmentWorkerDetailsBinding.detailTitleTextView.text = it?.lastName
+            fragmentWorkerDetailsBinding.actvFirstName.text = it?.firstName
+            fragmentWorkerDetailsBinding.actvLastName.text = it?.lastName
+            fragmentWorkerDetailsBinding.actvBirthday.text = it?.birthday
+            fragmentWorkerDetailsBinding.actvAge.text = it?.age
+            fragmentWorkerDetailsBinding.actvSpecialityName.text = it?.specialityName
 
             if (it?.avatarUrl?.isEmpty() == true) {
                 fragmentWorkerDetailsBinding.detailToolbarImageView.setImageResource(R.drawable.no_image_available)

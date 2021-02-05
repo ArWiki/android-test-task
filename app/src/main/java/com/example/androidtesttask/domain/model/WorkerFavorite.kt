@@ -9,6 +9,7 @@ data class WorkerFavorite(
     var firstName: String?,
     var lastName: String?,
     var birthday: String?,
+    var age: String?,
     var avatarUrl: String?,
     var specialityId: Int?,
     var specialityName: String?,

@@ -2,13 +2,17 @@ package com.example.androidtesttask.presentation.screeen.worker
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.TextView
+import androidx.appcompat.widget.AppCompatImageView
+import androidx.appcompat.widget.AppCompatTextView
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.recyclerview.widget.RecyclerView
 import com.example.androidtesttask.R
 import com.example.androidtesttask.databinding.AdapterWorkerDescribeBinding
 import com.example.androidtesttask.presentation.model.Worker
-import java.util.ArrayList
+import java.util.*
+
 
 internal class WorkersAdapter(val mListener: OnWorkersAdapterListener) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -54,11 +58,11 @@ internal class WorkersAdapter(val mListener: OnWorkersAdapterListener) :
         notifyDataSetChanged()
     }
 
-
     inner class AlbumViewHolder(
         private val dataBinding: ViewDataBinding
     ) : RecyclerView.ViewHolder(dataBinding.root) {
 
+        private lateinit var nickTextView: AppCompatTextView
 
         fun onBind(worker: Worker) {
             val holderWorkerBinding = dataBinding as AdapterWorkerDescribeBinding

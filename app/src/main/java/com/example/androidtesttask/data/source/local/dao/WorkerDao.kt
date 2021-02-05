@@ -37,6 +37,6 @@ interface WorkerDao {
     @Query("SELECT * FROM WorkerFavorite where lastName = :lastName AND firstName =:firstName AND birthday =:birthday")
     fun getFavorite(lastName: String?, firstName: String?, birthday: String?): WorkerFavorite?
 
-    @Query("SELECT * FROM WorkerFavorite where lastName = :lastName AND firstName =:firstName")
-    fun isFavorite(lastName: String?, firstName: String?): WorkerFavorite?
+    @Query("SELECT * FROM WorkerFavorite where lastName = :lastName AND firstName =:firstName AND birthday =:birthday")
+    fun isFavorite(lastName: String?, firstName: String?, birthday: String?): WorkerFavorite?
 }
