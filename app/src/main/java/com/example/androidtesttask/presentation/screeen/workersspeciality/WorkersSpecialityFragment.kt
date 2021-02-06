@@ -44,11 +44,11 @@ class WorkersSpecialityFragment : Fragment(), OnWorkersSpecialityAdapterListener
         (activity as MainActivity).setSupportActionBar(fragmentWorkersSpecialityBinding.toolbar)
 
         fragmentWorkersSpecialityBinding.workersSpecialityViewModel = viewModel
-        fragmentWorkersSpecialityBinding.albumsRecyclerView.adapter = adapter
+        fragmentWorkersSpecialityBinding.workersRecyclerView.adapter = adapter
 
         viewModel.isLoad.observe(viewLifecycleOwner, {
             it?.let { visibility ->
-                fragmentWorkersSpecialityBinding.albumsProgressBar.visibility =
+                fragmentWorkersSpecialityBinding.workersSpecialityProgressBar.visibility =
                     if (visibility) View.GONE else View.VISIBLE
             }
         })

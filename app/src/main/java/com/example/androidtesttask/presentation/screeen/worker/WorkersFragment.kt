@@ -19,7 +19,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class WorkersFragment : Fragment(), OnWorkersAdapterListener {
 
-    private lateinit var fragmentAlbumsBinding: FragmentWorkersBinding
+    private lateinit var fragmentWorkersBinding: FragmentWorkersBinding
     private var adapter: WorkersAdapter? = null
 
     private val viewModel: WorkersViewModel by viewModels()
@@ -37,23 +37,23 @@ class WorkersFragment : Fragment(), OnWorkersAdapterListener {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        fragmentAlbumsBinding = DataBindingUtil.inflate(
+        fragmentWorkersBinding = DataBindingUtil.inflate(
             inflater,
             R.layout.fragment_workers,
             container,
             false
         )
 
-        (activity as MainActivity).setSupportActionBar(fragmentAlbumsBinding.toolbar)
+        (activity as MainActivity).setSupportActionBar(fragmentWorkersBinding.toolbar)
         (activity as MainActivity).supportActionBar?.setDisplayHomeAsUpEnabled(true)
         (activity as MainActivity).supportActionBar?.setDisplayShowHomeEnabled(true)
 
-        fragmentAlbumsBinding.workersViewModel = viewModel
-        fragmentAlbumsBinding.albumsRecyclerView.adapter = adapter
+        fragmentWorkersBinding.workersViewModel = viewModel
+        fragmentWorkersBinding.workersRecyclerView.adapter = adapter
 
         viewModel.isLoad.observe(viewLifecycleOwner, {
             it?.let { visibility ->
-                fragmentAlbumsBinding.albumsProgressBar.visibility =
+                fragmentWorkersBinding.workersProgressBar.visibility =
                     if (visibility) View.GONE else View.VISIBLE
             }
         })
@@ -74,7 +74,7 @@ class WorkersFragment : Fragment(), OnWorkersAdapterListener {
             }
         })
 
-        return fragmentAlbumsBinding.root
+        return fragmentWorkersBinding.root
     }
 
     private fun initRecyclerView(workers: List<Worker>) {

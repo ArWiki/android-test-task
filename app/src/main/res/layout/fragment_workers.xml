@@ -34,7 +34,7 @@
         </com.google.android.material.appbar.AppBarLayout>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/albums_recycler_view"
+            android:id="@+id/workers_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
@@ -42,7 +42,7 @@
             app:spanCount="1" />
 
         <ProgressBar
-            android:id="@+id/albums_progress_bar"
+            android:id="@+id/workers_progress_bar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

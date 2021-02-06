@@ -17,12 +17,12 @@ internal class WorkersAdapter(val mListener: OnWorkersAdapterListener) :
     private val workers: MutableList<Worker> = ArrayList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-        val holderAlbumBinding = DataBindingUtil.inflate<ViewDataBinding>(
+        val holderWorkerBinding = DataBindingUtil.inflate<ViewDataBinding>(
             LayoutInflater.from(parent.context),
             R.layout.adapter_worker_describe, parent,
             false
         )
-        return WorkersViewHolder(holderAlbumBinding)
+        return WorkersViewHolder(holderWorkerBinding)
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {

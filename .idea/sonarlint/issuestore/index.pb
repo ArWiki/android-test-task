@@ -75,8 +75,6 @@ eapp/src/main/java/com/example/androidtesttask/presentation/screeen/workerdetail
 Zapp/src/main/java/com/example/androidtesttask/presentation/screeen/worker/WorkersMapper.kt,3\4\34a5a571b01b096dc27ccdc203e6920758e550ff
 h
 8app/src/main/res/drawable/ic_star_empty_white_vector.xml,4\2\420edf627b590d4acc5774b55bbe32073bd807bf
-R
-"app/src/main/res/values/colors.xml,9\6\969faa2a5d9f5e8390e958d2c07f2cfd54676e6b
 é
 ^app/src/main/java/com/example/androidtesttask/data/repository/WorkerSpecialityRepositoryImp.kt,9\a\9ac67de32eb6b7e407fd6d84f2d076731fdfa453
 ç
@@ -97,9 +95,5 @@ oapp/src/main/java/com/example/androidtesttask/presentation/screeen/workersspeci
 rapp/src/main/java/com/example/androidtesttask/presentation/screeen/workersspeciality/WorkersSpecialityViewModel.kt,a\9\a9c2027cc68ec691b59999fb0455d8d55b87d4a6
 °
 qapp/src/main/java/com/example/androidtesttask/presentation/screeen/workersspeciality/WorkersSpecialityFragment.kt,5\7\57cabc046236606062de65ef3e7f7372076a5767
-Y
-)app/src/main/res/layout/activity_main.xml,7\6\76b07e40f24cce093536731477540f12e7da3cb6
 ã
 [app/src/main/java/com/example/androidtesttask/domain/usecase/GetWorkersSpecialityUseCase.kt,5\3\53968e3223e1a1d64d2000f1f3748875ec171c59
-c
-3app/src/main/res/layout/fragment_worker_details.xml,4\1\4161a4b5a1caf92dc2099b114a6afc4e63841568

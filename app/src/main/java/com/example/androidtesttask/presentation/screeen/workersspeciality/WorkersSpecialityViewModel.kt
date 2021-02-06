@@ -4,7 +4,6 @@ import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.androidtesttask.domain.usecase.GetWorkersSpecialityUseCase
-import com.example.androidtesttask.presentation.model.Worker
 import com.example.androidtesttask.presentation.model.Speciality
 
 class WorkersSpecialityViewModel @ViewModelInject constructor(

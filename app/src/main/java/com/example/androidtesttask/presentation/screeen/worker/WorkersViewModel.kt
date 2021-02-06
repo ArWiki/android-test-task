@@ -1,11 +1,9 @@
 package com.example.androidtesttask.presentation.screeen.worker
 
-import android.widget.Toast
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.androidtesttask.presentation.model.Worker
-import com.example.androidtesttask.domain.model.WorkerResponse
 import com.example.androidtesttask.domain.usecase.GetWorkersUseCase
 
 class WorkersViewModel @ViewModelInject constructor(

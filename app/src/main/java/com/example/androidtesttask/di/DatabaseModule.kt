@@ -3,7 +3,6 @@ package com.example.androidtesttask.di
 import android.app.Application
 import androidx.room.Room
 import com.example.androidtesttask.data.source.local.AppDatabase
-import com.example.androidtesttask.data.source.local.dao.WorkerDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -22,11 +21,5 @@ class DatabaseModule {
             AppDatabase::class.java,
             AppDatabase.DB_NAME
         ).allowMainThreadQueries().build()
-    }
-
-
-    @Provides
-    internal fun provideWorkerDao(appDatabase: AppDatabase): WorkerDao {
-        return appDatabase.workerDao
     }
 }

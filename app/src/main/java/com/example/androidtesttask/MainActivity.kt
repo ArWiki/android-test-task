@@ -1,7 +1,6 @@
 package com.example.androidtesttask
 
 import android.os.Bundle
-import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.example.androidtesttask.presentation.screeen.workersspeciality.WorkersSpecialityFragment
 import dagger.hilt.android.AndroidEntryPoint

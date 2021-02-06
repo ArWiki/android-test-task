@@ -2,7 +2,6 @@ package com.example.androidtesttask.presentation.screeen.workersspeciality
 
 import androidx.lifecycle.MutableLiveData
 import com.example.androidtesttask.presentation.model.Speciality
-import com.example.androidtesttask.presentation.model.Worker
 import com.example.androidtesttask.presentation.screeen.worker.WorkerViewModel
 
 class WorkerSpecialityViewModel(val speciality: Speciality) {
