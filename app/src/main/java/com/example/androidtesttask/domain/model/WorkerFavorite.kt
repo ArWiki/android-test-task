@@ -5,7 +5,7 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "WorkerFavorite")
 data class WorkerFavorite(
-    @PrimaryKey var id: Long,
+    @PrimaryKey(autoGenerate = true) var id: Long,
     var firstName: String?,
     var lastName: String?,
     var birthday: String?,

@@ -2,6 +2,7 @@ package com.example.androidtesttask.util
 
 import androidx.appcompat.widget.AppCompatImageView
 import com.example.androidtesttask.util.Constants.DOUBLE_HYPHEN
+import com.example.androidtesttask.util.Constants.EMPTY
 import com.squareup.picasso.Picasso
 import java.text.SimpleDateFormat
 import java.util.*
@@ -11,7 +12,7 @@ fun AppCompatImageView.loadImageFull(url: String?) =
 
 fun String.toFirstUpperCase(): String {
     return if (this.isEmpty()) {
-        ""
+        EMPTY
     } else {
         this.substring(0, 1).toUpperCase(Locale.getDefault()) + this.substring(1)
     }
@@ -29,6 +30,6 @@ fun String.convertDate(): String {
 
         val date: Date? = formatter.parse(this)
         val dateFormat = SimpleDateFormat(Constants.LOCAL_DATE_DD_MM_YYYY, Locale.ENGLISH)
-        dateFormat.format(date ?: Constants.DOUBLE_HYPHEN) + Constants.BIRTHDAY_WITH_YEAR
+        dateFormat.format(date ?: DOUBLE_HYPHEN) + Constants.BIRTHDAY_WITH_YEAR
     }
 }

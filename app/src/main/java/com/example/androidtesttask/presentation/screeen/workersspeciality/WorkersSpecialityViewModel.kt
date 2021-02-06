@@ -9,21 +9,18 @@ import com.example.androidtesttask.presentation.model.Speciality
 
 class WorkersSpecialityViewModel @ViewModelInject constructor(
     private val getWorkersSpecialityUseCase: GetWorkersSpecialityUseCase,
-    //private val mapper: WorkersSpecialityMapperImpl
+    private val mapper: WorkersSpecialityMapper
 ) : ViewModel() {
 
     private val TAG = WorkersSpecialityViewModel::class.java.simpleName
     val specialityReceivedLiveData = MutableLiveData<List<Speciality>>()
     val isLoad = MutableLiveData<Boolean>()
-    val mapper: WorkersSpecialityMapper = WorkersSpecialityMapperImpl()
 
     init {
         isLoad.value = false
     }
 
-    fun convertToWorkDetailsModel(worker: Worker) = mapper.convertToWorkDetailsModel(worker)
-
-    fun loadWorkers() {
+    internal fun loadWorkers() {
         getWorkersSpecialityUseCase.execute(
             onSuccess = {
                 isLoad.value = true

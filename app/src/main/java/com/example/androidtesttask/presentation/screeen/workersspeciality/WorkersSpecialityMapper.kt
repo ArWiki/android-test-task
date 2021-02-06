@@ -5,17 +5,10 @@ import com.example.androidtesttask.domain.model.WorkerResponse
 import com.example.androidtesttask.presentation.model.Speciality
 import com.example.androidtesttask.presentation.model.Worker
 import com.example.androidtesttask.presentation.screeen.workerdetail.WorkerDetailsModel
+import javax.inject.Inject
 
-interface WorkersSpecialityMapper {
-    fun convertWorkerResponseToSpeciality(response: WorkerResponse): List<Speciality>
-
-    fun convertWorkerResponseToWorker(response: WorkerResponse): List<WorkerDB>
-
-    fun convertToWorkDetailsModel(worker: Worker): WorkerDetailsModel
-}
-
-class WorkersSpecialityMapperImpl : WorkersSpecialityMapper {
-    override fun convertWorkerResponseToSpeciality(response: WorkerResponse): List<Speciality> {
+class WorkersSpecialityMapper @Inject constructor() {
+    internal fun convertWorkerResponseToSpeciality(response: WorkerResponse): List<Speciality> {
         val list: MutableList<Speciality> = mutableListOf()
 
         response.response?.forEach { worker ->
@@ -32,7 +25,7 @@ class WorkersSpecialityMapperImpl : WorkersSpecialityMapper {
         return list.distinct()
     }
 
-    override fun convertWorkerResponseToWorker(response: WorkerResponse): List<WorkerDB> {
+    internal fun convertWorkerResponseToWorker(response: WorkerResponse): List<WorkerDB> {
         val list: MutableList<WorkerDB> = mutableListOf()
 
         response.response?.forEach { worker ->
@@ -53,13 +46,4 @@ class WorkersSpecialityMapperImpl : WorkersSpecialityMapper {
 
         return list
     }
-
-    override fun convertToWorkDetailsModel(worker: Worker) = WorkerDetailsModel(
-        worker.firstName,
-        worker.lastName,
-        worker.birthday,
-        worker.avatarUrl,
-        worker.speciality?.first()?.specialityId,
-        worker.speciality?.first()?.specialityName,
-    )
 }

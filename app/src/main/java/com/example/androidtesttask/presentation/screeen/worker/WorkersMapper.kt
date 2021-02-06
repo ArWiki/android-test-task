@@ -2,23 +2,15 @@ package com.example.androidtesttask.presentation.screeen.worker
 
 import com.example.androidtesttask.domain.model.WorkerDB
 import com.example.androidtesttask.presentation.model.Worker
-import com.example.androidtesttask.domain.model.WorkerResponse
 import com.example.androidtesttask.presentation.screeen.workerdetail.WorkerDetailsModel
-import com.example.androidtesttask.util.Constants
-import com.example.androidtesttask.util.Constants.BIRTHDAY_WITH_YEAR
 import com.example.androidtesttask.util.Constants.DOUBLE_HYPHEN
 import com.example.androidtesttask.util.convertDate
 import com.example.androidtesttask.util.toFirstUpperCase
 import java.util.*
+import javax.inject.Inject
 
-interface WorkerMapper {
-    fun convertWorkerDBToWorker(worker: MutableList<WorkerDB>): List<Worker>
-
-    fun convertToWorkDetailsModel(worker: Worker): WorkerDetailsModel
-}
-
-class WorkerMapperImpl : WorkerMapper {
-    override fun convertWorkerDBToWorker(worker: MutableList<WorkerDB>): List<Worker> {
+class WorkerMapper @Inject constructor() {
+    internal fun convertWorkerDBToWorker(worker: MutableList<WorkerDB>): List<Worker> {
         val list: MutableList<Worker> = mutableListOf()
 
         worker.forEach { workerItem ->
@@ -46,7 +38,7 @@ class WorkerMapperImpl : WorkerMapper {
         return list
     }
 
-    override fun convertToWorkDetailsModel(worker: Worker) = WorkerDetailsModel(
+    internal fun convertToWorkDetailsModel(worker: Worker) = WorkerDetailsModel(
         worker.firstName,
         worker.lastName,
         worker.birthday,

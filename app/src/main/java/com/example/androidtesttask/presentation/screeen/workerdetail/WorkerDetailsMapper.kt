@@ -6,19 +6,14 @@ import com.example.androidtesttask.util.Constants.LOCAL_DATE_DD_MM_YYYY
 import com.example.androidtesttask.util.toFirstUpperCase
 import java.text.SimpleDateFormat
 import java.util.*
+import javax.inject.Inject
 
-interface WorkerDetailsMapper {
-    fun convertWorkerDetailsModelToWorkerFavorite(
-        workerDetailsModel: WorkerDetailsModel
-    ): WorkerFavorite
-}
-
-class WorkerDetailsMapperImpl : WorkerDetailsMapper {
-    override fun convertWorkerDetailsModelToWorkerFavorite(
+class WorkerDetailsMapper @Inject constructor() {
+    internal fun convertWorkerDetailsModelToWorkerFavorite(
         workerDetailsModel: WorkerDetailsModel
     ): WorkerFavorite {
         return WorkerFavorite(
-            id = 1L,
+            id = 0,
             firstName = workerDetailsModel.firstName
                 ?.toLowerCase(Locale.getDefault())
                 ?.toFirstUpperCase(),

@@ -5,6 +5,7 @@ object Constants {
 
     const val GET_WORKERS = "65gb/static/raw/master/testTask.json"
 
+    const val EMPTY = ""
     const val HYPHEN = "-"
     const val DOUBLE_HYPHEN = "--"
 

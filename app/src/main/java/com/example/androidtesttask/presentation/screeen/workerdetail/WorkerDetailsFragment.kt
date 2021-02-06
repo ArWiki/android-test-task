@@ -54,10 +54,10 @@ class WorkerDetailsFragment : Fragment() {
             fragmentWorkerDetailsBinding.actvAge.text = it?.age
             fragmentWorkerDetailsBinding.actvSpecialityName.text = it?.specialityName
 
-            if (it?.avatarUrl?.isEmpty() == true) {
+            if (it?.avatarUrl == null || it.avatarUrl?.isEmpty() == true) {
                 fragmentWorkerDetailsBinding.detailToolbarImageView.setImageResource(R.drawable.no_image_available)
             } else {
-                fragmentWorkerDetailsBinding.detailToolbarImageView.loadImageFull(it?.avatarUrl)
+                fragmentWorkerDetailsBinding.detailToolbarImageView.loadImageFull(it.avatarUrl)
             }
         })
 

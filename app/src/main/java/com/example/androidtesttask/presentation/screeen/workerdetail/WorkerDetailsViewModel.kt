@@ -7,14 +7,14 @@ import com.example.androidtesttask.domain.model.WorkerFavorite
 import com.example.androidtesttask.domain.usecase.GetWorkerDetailsUseCase
 
 class WorkerDetailsViewModel @ViewModelInject constructor(
-    private val getWorkerDetailsUseCase: GetWorkerDetailsUseCase
+    private val getWorkerDetailsUseCase: GetWorkerDetailsUseCase,
+    private val mapper: WorkerDetailsMapper
 ) : ViewModel() {
 
     private val TAG = WorkerDetailsViewModel::class.java.simpleName
     val workerFavoriteData = MutableLiveData<WorkerFavorite>()
     val isLoad = MutableLiveData<Boolean>()
     val isFavorite = MutableLiveData<Boolean>()
-    val mapper: WorkerDetailsMapper = WorkerDetailsMapperImpl()
 
     init {
         isLoad.value = false

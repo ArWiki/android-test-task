@@ -8,7 +8,10 @@ class WorkerDetailsRepositoryImp(
     private val database: AppDatabase,
 ) : WorkerDetailsRepository {
     override fun deleteWorker(worker: WorkerFavorite) {
-        database.workerDao.deleteWorkerFavorite(worker)
+        database.workerDao.deleteWorkerFavorite(
+            worker.lastName,
+            worker.firstName,
+            worker.birthday)
     }
 
     override fun addWorker(worker: WorkerFavorite) {

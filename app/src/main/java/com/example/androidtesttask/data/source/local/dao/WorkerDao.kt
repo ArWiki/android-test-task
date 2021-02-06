@@ -31,8 +31,8 @@ interface WorkerDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertWorkerFavorite(worker: WorkerFavorite): Long
 
-    @Delete
-    fun deleteWorkerFavorite(worker: WorkerFavorite)
+    @Query("DELETE FROM WorkerFavorite where lastName = :lastName AND firstName =:firstName AND birthday =:birthday")
+    fun deleteWorkerFavorite(lastName: String?, firstName: String?, birthday: String?)
 
     @Query("SELECT * FROM WorkerFavorite where lastName = :lastName AND firstName =:firstName AND birthday =:birthday")
     fun getFavorite(lastName: String?, firstName: String?, birthday: String?): WorkerFavorite?
