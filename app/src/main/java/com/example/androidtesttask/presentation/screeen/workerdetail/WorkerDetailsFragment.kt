@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -30,7 +31,7 @@ class WorkerDetailsFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         fragmentWorkerDetailsBinding = DataBindingUtil
             .inflate(inflater, R.layout.fragment_worker_details, container, false)
 
@@ -55,7 +56,9 @@ class WorkerDetailsFragment : Fragment() {
             fragmentWorkerDetailsBinding.actvSpecialityName.text = it?.specialityName
 
             if (it?.avatarUrl == null || it.avatarUrl?.isEmpty() == true) {
-                fragmentWorkerDetailsBinding.detailToolbarImageView.setImageResource(R.drawable.no_image_available)
+                fragmentWorkerDetailsBinding
+                    .detailToolbarImageView
+                    .setImageResource(R.drawable.no_image_available)
             } else {
                 fragmentWorkerDetailsBinding.detailToolbarImageView.loadImageFull(it.avatarUrl)
             }
@@ -69,6 +72,16 @@ class WorkerDetailsFragment : Fragment() {
                     else
                         R.drawable.ic_star_empty_white_vector
                 )
+            }
+        })
+
+        viewModel.isError.observe(viewLifecycleOwner, {
+            it?.let { isError ->
+                if (isError) {
+                    Toast
+                        .makeText(requireContext(), R.string.ERROR_MESSAGE, Toast.LENGTH_SHORT)
+                        .show()
+                }
             }
         })
 

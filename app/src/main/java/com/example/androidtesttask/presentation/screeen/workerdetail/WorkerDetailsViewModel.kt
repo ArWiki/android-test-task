@@ -15,13 +15,14 @@ class WorkerDetailsViewModel @ViewModelInject constructor(
     val workerFavoriteData = MutableLiveData<WorkerFavorite>()
     val isLoad = MutableLiveData<Boolean>()
     val isFavorite = MutableLiveData<Boolean>()
+    val isError = MutableLiveData<Boolean>()
 
     init {
         isLoad.value = false
+        isError.value = false
     }
 
     internal fun setDetail(workerDetailsModel: WorkerDetailsModel) {
-        isLoad.value = true
         workerFavoriteData.value =
             mapper.convertWorkerDetailsModelToWorkerFavorite(workerDetailsModel)
     }
@@ -41,6 +42,16 @@ class WorkerDetailsViewModel @ViewModelInject constructor(
 
     internal fun checkFavoriteStatus(workerDetailsModel: WorkerDetailsModel) {
         val workerFavorite = mapper.convertWorkerDetailsModelToWorkerFavorite(workerDetailsModel)
-        isFavorite.value = getWorkerDetailsUseCase.isFavorite(workerFavorite)
+        getWorkerDetailsUseCase.saveWorkerFavorite(workerFavorite)
+        getWorkerDetailsUseCase.execute(
+            onSuccess = {
+                isLoad.value = true
+                isFavorite.value = it
+            },
+            onError = {
+                it.printStackTrace()
+                isError.value = true
+            }
+        )
     }
 }

@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.androidtesttask.R
@@ -35,7 +36,7 @@ class WorkersFragment : Fragment(), OnWorkersAdapterListener {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         fragmentAlbumsBinding = DataBindingUtil.inflate(
             inflater,
             R.layout.fragment_workers,
@@ -60,6 +61,16 @@ class WorkersFragment : Fragment(), OnWorkersAdapterListener {
         viewModel.workersReceivedLiveData.observe(viewLifecycleOwner, {
             it?.let {
                 initRecyclerView(it)
+            }
+        })
+
+        viewModel.isError.observe(viewLifecycleOwner, {
+            it?.let { isError ->
+                if (isError) {
+                    Toast
+                        .makeText(requireContext(), R.string.ERROR_MESSAGE, Toast.LENGTH_SHORT)
+                        .show()
+                }
             }
         })
 

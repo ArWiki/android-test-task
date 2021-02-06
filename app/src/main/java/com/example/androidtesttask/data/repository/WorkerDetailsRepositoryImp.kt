@@ -3,6 +3,7 @@ package com.example.androidtesttask.data.repository
 import com.example.androidtesttask.data.source.local.AppDatabase
 import com.example.androidtesttask.domain.model.WorkerFavorite
 import com.example.androidtesttask.domain.repository.WorkerDetailsRepository
+import io.reactivex.Single
 
 class WorkerDetailsRepositoryImp(
     private val database: AppDatabase,
@@ -18,11 +19,11 @@ class WorkerDetailsRepositoryImp(
         database.workerDao.insertWorkerFavorite(worker)
     }
 
-    override fun isFavorite(worker: WorkerFavorite): Boolean {
+    override fun isFavorite(worker: WorkerFavorite): Single<Boolean> {
         val loadOneByPhotoId = database.workerDao.isFavorite(
             worker.lastName,
             worker.firstName,
             worker.birthday)
-        return loadOneByPhotoId != null
+        return Single.just(loadOneByPhotoId != null)
     }
 }

@@ -15,9 +15,11 @@ class WorkersSpecialityViewModel @ViewModelInject constructor(
     private val TAG = WorkersSpecialityViewModel::class.java.simpleName
     val specialityReceivedLiveData = MutableLiveData<List<Speciality>>()
     val isLoad = MutableLiveData<Boolean>()
+    val isError = MutableLiveData<Boolean>()
 
     init {
         isLoad.value = false
+        isError.value = false
     }
 
     internal fun loadWorkers() {
@@ -32,6 +34,7 @@ class WorkersSpecialityViewModel @ViewModelInject constructor(
             },
             onError = {
                 it.printStackTrace()
+                isError.value = true
             }
         )
     }
