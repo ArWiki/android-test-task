@@ -55,5 +55,4 @@ internal class WorkersSpecialityAdapter(val mListener: OnWorkersSpecialityAdapte
             }
         }
     }
-
 }

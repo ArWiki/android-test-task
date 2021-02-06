@@ -1,6 +1,5 @@
-# android_test_task
+# Тестовое задание
 
-Тестовое задание
 Технические требования:
 1. Single Activity Application
 2. Android 5.0+

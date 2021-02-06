@@ -18,12 +18,12 @@ class WorkerMapper @Inject constructor() {
 
             val listSpecialty: MutableList<Worker.Speciality> = mutableListOf()
 
-                listSpecialty.add(
-                    Worker.Speciality(
-                        workerItem.specialityId,
-                        workerItem.specialityName,
-                    )
+            listSpecialty.add(
+                Worker.Speciality(
+                    workerItem.specialityId,
+                    workerItem.specialityName,
                 )
+            )
 
             list.add(
                 Worker(

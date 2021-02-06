@@ -5,7 +5,7 @@ import com.example.androidtesttask.presentation.model.Worker
 
 class WorkerViewModel(val worker: Worker) {
 
-    val workerData = MutableLiveData<Worker>()
+    private val workerData = MutableLiveData<Worker>()
 
     init {
         workerData.value = worker

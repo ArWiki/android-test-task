@@ -56,5 +56,4 @@ internal class WorkersAdapter(val mListener: OnWorkersAdapterListener) :
             }
         }
     }
-
 }

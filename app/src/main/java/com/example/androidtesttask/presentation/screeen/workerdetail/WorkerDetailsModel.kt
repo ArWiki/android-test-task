@@ -37,13 +37,13 @@ data class WorkerDetailsModel(
         @JvmField
         val CREATOR: Parcelable.Creator<WorkerDetailsModel> =
             object : Parcelable.Creator<WorkerDetailsModel> {
-            override fun createFromParcel(parcel: Parcel): WorkerDetailsModel {
-                return WorkerDetailsModel(parcel)
-            }
+                override fun createFromParcel(parcel: Parcel): WorkerDetailsModel {
+                    return WorkerDetailsModel(parcel)
+                }
 
-            override fun newArray(size: Int): Array<WorkerDetailsModel?> {
-                return arrayOfNulls(size)
+                override fun newArray(size: Int): Array<WorkerDetailsModel?> {
+                    return arrayOfNulls(size)
+                }
             }
-        }
     }
 }

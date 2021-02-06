@@ -12,18 +12,19 @@ class WorkerDetailsMapper @Inject constructor() {
         workerDetailsModel: WorkerDetailsModel
     ): WorkerFavorite {
         return WorkerFavorite(
-            id = 0,
-            firstName = workerDetailsModel.firstName
+            0,
+            workerDetailsModel.firstName
                 ?.toLowerCase(Locale.getDefault())
                 ?.toFirstUpperCase(),
-            lastName = workerDetailsModel.lastName
+            workerDetailsModel.lastName
                 ?.toLowerCase(Locale.getDefault())
                 ?.toFirstUpperCase(),
-            avatarUrl = workerDetailsModel.avatarUrl,
-            birthday = workerDetailsModel.birthday,
-            age = workerDetailsModel.birthday?.calculateAge() ?: DOUBLE_HYPHEN,
-            specialityId = workerDetailsModel.specialtyId,
-            specialityName = workerDetailsModel.specialtyName,
+            workerDetailsModel.birthday,
+            workerDetailsModel.birthday
+                ?.calculateAge() ?: DOUBLE_HYPHEN,
+            workerDetailsModel.avatarUrl,
+            workerDetailsModel.specialtyId,
+            workerDetailsModel.specialtyName,
         )
     }
 }

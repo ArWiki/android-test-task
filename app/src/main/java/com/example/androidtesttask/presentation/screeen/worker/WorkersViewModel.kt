@@ -20,7 +20,8 @@ class WorkersViewModel @ViewModelInject constructor(
         isError.value = false
     }
 
-    internal fun convertToWorkDetailsModel(worker: Worker) = mapper.convertToWorkDetailsModel(worker)
+    internal fun convertToWorkDetailsModel(worker: Worker) =
+        mapper.convertToWorkDetailsModel(worker)
 
     internal fun loadWorkers(specialityId: Int?) {
         getWorkersUseCase.saveSpecialityId(specialityId)

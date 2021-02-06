@@ -12,12 +12,10 @@ class WorkerDetailsViewModel @ViewModelInject constructor(
 ) : ViewModel() {
 
     val workerFavoriteData = MutableLiveData<WorkerFavorite>()
-    val isLoad = MutableLiveData<Boolean>()
     val isFavorite = MutableLiveData<Boolean>()
     val isError = MutableLiveData<Boolean>()
 
     init {
-        isLoad.value = false
         isError.value = false
     }
 
@@ -44,7 +42,6 @@ class WorkerDetailsViewModel @ViewModelInject constructor(
         getWorkerDetailsUseCase.saveWorkerFavorite(workerFavorite)
         getWorkerDetailsUseCase.execute(
             onSuccess = {
-                isLoad.value = true
                 isFavorite.value = it
             },
             onError = {

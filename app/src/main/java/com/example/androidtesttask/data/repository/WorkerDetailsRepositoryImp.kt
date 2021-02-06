@@ -12,7 +12,8 @@ class WorkerDetailsRepositoryImp(
         database.workerDao.deleteWorkerFavorite(
             worker.lastName,
             worker.firstName,
-            worker.birthday)
+            worker.birthday
+        )
     }
 
     override fun addWorker(worker: WorkerFavorite) {
@@ -23,7 +24,8 @@ class WorkerDetailsRepositoryImp(
         val loadOneByPhotoId = database.workerDao.isFavorite(
             worker.lastName,
             worker.firstName,
-            worker.birthday)
+            worker.birthday
+        )
         return Single.just(loadOneByPhotoId != null)
     }
 }
