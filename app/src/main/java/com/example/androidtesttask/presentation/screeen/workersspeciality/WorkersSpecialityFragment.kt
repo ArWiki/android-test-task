@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import com.example.androidtesttask.MainActivity
 import com.example.androidtesttask.R
 import com.example.androidtesttask.databinding.FragmentWorkerSpecialityBinding
@@ -46,14 +45,14 @@ class WorkersSpecialityFragment : Fragment(), OnWorkersSpecialityAdapterListener
         fragmentWorkersSpecialityBinding.workersSpecialityViewModel = viewModel
         fragmentWorkersSpecialityBinding.albumsRecyclerView.adapter = adapter
 
-        viewModel.isLoad.observe(viewLifecycleOwner, Observer {
+        viewModel.isLoad.observe(viewLifecycleOwner, {
             it?.let { visibility ->
                 fragmentWorkersSpecialityBinding.albumsProgressBar.visibility =
                     if (visibility) View.GONE else View.VISIBLE
             }
         })
 
-        viewModel.specialityReceivedLiveData.observe(viewLifecycleOwner, Observer {
+        viewModel.specialityReceivedLiveData.observe(viewLifecycleOwner, {
             it?.let {
                 initRecyclerView(it)
             }

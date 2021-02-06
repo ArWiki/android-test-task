@@ -102,6 +102,4 @@ Y
 ‹
 [app/src/main/java/com/example/androidtesttask/domain/usecase/GetWorkersSpecialityUseCase.kt,5\3\53968e3223e1a1d64d2000f1f3748875ec171c59
 c
-3app/src/main/res/layout/adapter_worker_describe.xml,1\e\1e45d6b9ddf300bbdaff5246b75f62d8480c8202
-c
 3app/src/main/res/layout/fragment_worker_details.xml,4\1\4161a4b5a1caf92dc2099b114a6afc4e63841568

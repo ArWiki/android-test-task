@@ -1,6 +1,6 @@
 package com.example.androidtesttask.domain.usecase
 
-import com.example.androidtesttask.domain.model.WorkerDB
+import com.example.androidtesttask.domain.model.WorkerDatabase
 import com.example.androidtesttask.domain.model.WorkerResponse
 import com.example.androidtesttask.domain.repository.WorkerSpecialityRepository
 import com.example.androidtesttask.domain.usecase.base.SingleUseCase
@@ -14,7 +14,7 @@ class GetWorkersSpecialityUseCase @Inject constructor(
         return repository.getWorkers()
     }
 
-    fun addWorkers(workers: List<WorkerDB>) {
+    fun addWorkers(workers: List<WorkerDatabase>) {
         workers.forEach {
             repository.addWorker(it)
         }

@@ -1,10 +1,8 @@
 package com.example.androidtesttask.presentation.screeen.workersspeciality
 
-import com.example.androidtesttask.domain.model.WorkerDB
+import com.example.androidtesttask.domain.model.WorkerDatabase
 import com.example.androidtesttask.domain.model.WorkerResponse
 import com.example.androidtesttask.presentation.model.Speciality
-import com.example.androidtesttask.presentation.model.Worker
-import com.example.androidtesttask.presentation.screeen.workerdetail.WorkerDetailsModel
 import javax.inject.Inject
 
 class WorkersSpecialityMapper @Inject constructor() {
@@ -25,13 +23,13 @@ class WorkersSpecialityMapper @Inject constructor() {
         return list.distinct()
     }
 
-    internal fun convertWorkerResponseToWorker(response: WorkerResponse): List<WorkerDB> {
-        val list: MutableList<WorkerDB> = mutableListOf()
+    internal fun convertWorkerResponseToWorker(response: WorkerResponse): List<WorkerDatabase> {
+        val list: MutableList<WorkerDatabase> = mutableListOf()
 
         response.response?.forEach { worker ->
             worker.speciality?.forEach { speciality ->
                 list.add(
-                    WorkerDB(
+                    WorkerDatabase(
                         0,
                         worker.firstName,
                         worker.lastName,

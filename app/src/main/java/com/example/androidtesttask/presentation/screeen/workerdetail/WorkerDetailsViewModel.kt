@@ -20,13 +20,13 @@ class WorkerDetailsViewModel @ViewModelInject constructor(
         isLoad.value = false
     }
 
-    fun setDetail(workerDetailsModel: WorkerDetailsModel) {
+    internal fun setDetail(workerDetailsModel: WorkerDetailsModel) {
         isLoad.value = true
         workerFavoriteData.value =
             mapper.convertWorkerDetailsModelToWorkerFavorite(workerDetailsModel)
     }
 
-    fun updateFavoriteStatus() {
+    internal fun updateFavoriteStatus() {
         workerFavoriteData.value?.let { workerFavorite ->
             if (isFavorite.value == true) {
                 getWorkerDetailsUseCase.deleteAsFavorite(workerFavorite)
@@ -39,7 +39,7 @@ class WorkerDetailsViewModel @ViewModelInject constructor(
         }
     }
 
-    fun checkFavoriteStatus(workerDetailsModel: WorkerDetailsModel) {
+    internal fun checkFavoriteStatus(workerDetailsModel: WorkerDetailsModel) {
         val workerFavorite = mapper.convertWorkerDetailsModelToWorkerFavorite(workerDetailsModel)
         isFavorite.value = getWorkerDetailsUseCase.isFavorite(workerFavorite)
     }

@@ -3,10 +3,10 @@ package com.example.androidtesttask.data.source.local
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import com.example.androidtesttask.data.source.local.dao.WorkerDao
-import com.example.androidtesttask.domain.model.WorkerDB
+import com.example.androidtesttask.domain.model.WorkerDatabase
 import com.example.androidtesttask.domain.model.WorkerFavorite
 
-@Database(entities = [WorkerDB::class, WorkerFavorite::class], version = 1, exportSchema = false)
+@Database(entities = [WorkerDatabase::class, WorkerFavorite::class], version = 1, exportSchema = false)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract val workerDao: WorkerDao

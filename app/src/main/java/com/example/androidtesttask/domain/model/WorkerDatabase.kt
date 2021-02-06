@@ -4,7 +4,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity(tableName = "Worker")
-data class WorkerDB(
+data class WorkerDatabase(
     @PrimaryKey(autoGenerate = true) var id: Long,
     var firstName: String?,
     var lastName: String?,

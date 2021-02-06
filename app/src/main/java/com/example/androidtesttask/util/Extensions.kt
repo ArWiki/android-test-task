@@ -1,8 +1,14 @@
 package com.example.androidtesttask.util
 
 import androidx.appcompat.widget.AppCompatImageView
+import com.example.androidtesttask.util.Constants.BIRTHDAY_WITH_YEAR
 import com.example.androidtesttask.util.Constants.DOUBLE_HYPHEN
 import com.example.androidtesttask.util.Constants.EMPTY
+import com.example.androidtesttask.util.Constants.HYPHEN
+import com.example.androidtesttask.util.Constants.JSON_DATE_DD_MM_YYYY
+import com.example.androidtesttask.util.Constants.JSON_DATE_YYYY_MM_DD
+import com.example.androidtesttask.util.Constants.LOCAL_DATE_DD_MM_YYYY
+import com.example.androidtesttask.util.Constants.POINT
 import com.squareup.picasso.Picasso
 import java.text.SimpleDateFormat
 import java.util.*
@@ -22,14 +28,42 @@ fun String.convertDate(): String {
     return if (this.isEmpty()) {
         DOUBLE_HYPHEN
     } else {
-        val formatter = if (this.substring(4, 5) == Constants.HYPHEN) {
-            SimpleDateFormat(Constants.JSON_DATE_YYYY_MM_DD, Locale.ENGLISH)
+        val formatter = if (this.substring(4, 5) == HYPHEN) {
+            SimpleDateFormat(JSON_DATE_YYYY_MM_DD, Locale.ENGLISH)
         } else {
-            SimpleDateFormat(Constants.JSON_DATE_DD_MM_YYYY, Locale.ENGLISH)
+            SimpleDateFormat(JSON_DATE_DD_MM_YYYY, Locale.ENGLISH)
         }
 
         val date: Date? = formatter.parse(this)
-        val dateFormat = SimpleDateFormat(Constants.LOCAL_DATE_DD_MM_YYYY, Locale.ENGLISH)
-        dateFormat.format(date ?: DOUBLE_HYPHEN) + Constants.BIRTHDAY_WITH_YEAR
+        val dateFormat = SimpleDateFormat(LOCAL_DATE_DD_MM_YYYY, Locale.ENGLISH)
+        dateFormat.format(date ?: DOUBLE_HYPHEN) + BIRTHDAY_WITH_YEAR
+    }
+}
+
+fun String.calculateAge(): String {
+    return if (this.isEmpty() || this == DOUBLE_HYPHEN) {
+        DOUBLE_HYPHEN
+    } else {
+        val formatter = when {
+            this.substring(2, 3) == POINT -> {
+                SimpleDateFormat(LOCAL_DATE_DD_MM_YYYY, Locale.ENGLISH)
+            }
+            this.substring(4, 5) == HYPHEN -> {
+                SimpleDateFormat(JSON_DATE_YYYY_MM_DD, Locale.ENGLISH)
+            }
+            else -> {
+                SimpleDateFormat(JSON_DATE_DD_MM_YYYY, Locale.ENGLISH)
+            }
+        }
+
+        val date: Date? = formatter.parse(this)
+        val birthdayCal: Calendar = Calendar.getInstance()
+        birthdayCal.timeInMillis = date?.time ?: 0L
+        val todayCal: Calendar = Calendar.getInstance()
+        var age: Int = todayCal.get(Calendar.YEAR) - birthdayCal.get(Calendar.YEAR)
+        if (todayCal.get(Calendar.DAY_OF_MONTH) < birthdayCal.get(Calendar.DAY_OF_MONTH)) {
+            age--
+        }
+        age.toString()
     }
 }

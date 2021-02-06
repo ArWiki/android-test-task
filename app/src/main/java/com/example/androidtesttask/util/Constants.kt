@@ -7,6 +7,7 @@ object Constants {
 
     const val EMPTY = ""
     const val HYPHEN = "-"
+    const val POINT = "."
     const val DOUBLE_HYPHEN = "--"
 
     const val JSON_DATE_YYYY_MM_DD = "yyyy-mm-dd"

@@ -1,7 +1,7 @@
 package com.example.androidtesttask.data.source.local.dao
 
 import androidx.room.*
-import com.example.androidtesttask.domain.model.WorkerDB
+import com.example.androidtesttask.domain.model.WorkerDatabase
 import com.example.androidtesttask.domain.model.WorkerFavorite
 import io.reactivex.Single
 
@@ -10,22 +10,22 @@ interface WorkerDao {
 
     // Table Worker
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(worker: WorkerDB): Long
+    fun insert(worker: WorkerDatabase): Long
 
     @Query("SELECT * FROM Worker")
-    fun loadAll(): MutableList<WorkerDB>
+    fun loadAll(): MutableList<WorkerDatabase>
 
     @Query("SELECT * FROM Worker where specialityId = :specialtyId")
-    fun loadWorkerBySpecialtyId(specialtyId: Int?): Single<MutableList<WorkerDB>>
+    fun loadWorkerBySpecialtyId(specialtyId: Int?): Single<MutableList<WorkerDatabase>>
 
     @Delete
-    fun delete(worker: WorkerDB)
+    fun delete(worker: WorkerDatabase)
 
     @Query("DELETE FROM Worker")
     fun deleteAll()
 
     @Update
-    fun update(worker: WorkerDB)
+    fun update(worker: WorkerDatabase)
 
     // Table WorkerFavorite
     @Insert(onConflict = OnConflictStrategy.REPLACE)

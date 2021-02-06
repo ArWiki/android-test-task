@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Observer
 import com.example.androidtesttask.R
 import com.example.androidtesttask.databinding.FragmentWorkersBinding
 import androidx.databinding.DataBindingUtil
@@ -28,7 +27,7 @@ class WorkersFragment : Fragment(), OnWorkersAdapterListener {
         super.onCreate(savedInstanceState)
         setHasOptionsMenu(true)
         adapter = WorkersAdapter(this)
-        val specialityId = arguments?.let { it.getInt(KEY_SPECIALITY_ID) }
+        val specialityId = arguments?.getInt(KEY_SPECIALITY_ID)
         viewModel.loadWorkers(specialityId)
     }
 
@@ -51,14 +50,14 @@ class WorkersFragment : Fragment(), OnWorkersAdapterListener {
         fragmentAlbumsBinding.workersViewModel = viewModel
         fragmentAlbumsBinding.albumsRecyclerView.adapter = adapter
 
-        viewModel.isLoad.observe(viewLifecycleOwner, Observer {
+        viewModel.isLoad.observe(viewLifecycleOwner, {
             it?.let { visibility ->
                 fragmentAlbumsBinding.albumsProgressBar.visibility =
                     if (visibility) View.GONE else View.VISIBLE
             }
         })
 
-        viewModel.workersReceivedLiveData.observe(viewLifecycleOwner, Observer {
+        viewModel.workersReceivedLiveData.observe(viewLifecycleOwner, {
             it?.let {
                 initRecyclerView(it)
             }
