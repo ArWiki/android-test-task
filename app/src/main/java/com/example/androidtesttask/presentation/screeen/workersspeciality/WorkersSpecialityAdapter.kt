@@ -13,7 +13,6 @@ import java.util.ArrayList
 internal class WorkersSpecialityAdapter(val mListener: OnWorkersSpecialityAdapterListener) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private val TAG = WorkersSpecialityAdapter::class.java.name
     private val speciality: MutableList<Speciality> = ArrayList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {

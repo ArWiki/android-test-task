@@ -13,7 +13,6 @@ import java.util.*
 internal class WorkersAdapter(val mListener: OnWorkersAdapterListener) :
     RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private val TAG = WorkersAdapter::class.java.name
     private val workers: MutableList<Worker> = ArrayList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {

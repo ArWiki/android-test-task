@@ -11,7 +11,6 @@ class WorkerDetailsViewModel @ViewModelInject constructor(
     private val mapper: WorkerDetailsMapper
 ) : ViewModel() {
 
-    private val TAG = WorkerDetailsViewModel::class.java.simpleName
     val workerFavoriteData = MutableLiveData<WorkerFavorite>()
     val isLoad = MutableLiveData<Boolean>()
     val isFavorite = MutableLiveData<Boolean>()

@@ -18,7 +18,6 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class WorkerDetailsFragment : Fragment() {
 
-    private val TAG = WorkerDetailsFragment::class.java.name
     private lateinit var fragmentWorkerDetailsBinding: FragmentWorkerDetailsBinding
     private val viewModel: WorkerDetailsViewModel by viewModels()
 

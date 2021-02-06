@@ -11,7 +11,6 @@ class WorkersViewModel @ViewModelInject constructor(
     private val mapper: WorkerMapper
 ) : ViewModel() {
 
-    private val TAG = WorkersViewModel::class.java.simpleName
     val workersReceivedLiveData = MutableLiveData<List<Worker>>()
     val isLoad = MutableLiveData<Boolean>()
     val isError = MutableLiveData<Boolean>()
